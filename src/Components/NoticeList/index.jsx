@@ -2,14 +2,19 @@ import React, { Component } from "react";
 
 import { connect } from "react-redux";
 import PageNoticeList from "./PageNoticeList";
+import Loader from "../Loader";
 
 class NoticeList extends Component {
   render() {
-    const { articles } = this.props.stateNotices;
+    const { stateNotices } = this.props;
 
     return (
       <div>
-        <PageNoticeList listnotices={articles} />
+        {Object.keys(stateNotices).length === 0 ? (
+          <Loader />
+        ) : (
+          <PageNoticeList listnotices={this.props.stateNotices.articles} />
+        )}
       </div>
     );
   }

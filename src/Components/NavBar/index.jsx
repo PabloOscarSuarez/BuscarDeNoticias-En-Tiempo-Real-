@@ -11,10 +11,14 @@ import {
   MDBBtn,
   MDBIcon
 } from "mdbreact";
+import { Link } from "react-router-dom";
 
 //redux
 import { connect } from "react-redux";
-import { searchNotices } from "../../redux/actions/actionsNotice";
+import {
+  searchNotices,
+  resetStateNotice
+} from "../../redux/actions/actionsNotice";
 
 class NavBar extends Component {
   state = {
@@ -32,9 +36,16 @@ class NavBar extends Component {
 
   // submit info to redux
   onClick = e => {
+    // reseteo store de redux
+    this.props.resetStateNotice();
+
     e.preventDefault();
+
     const { country, category } = this.state;
-    this.props.Notice(this.props.history, country, category);
+
+    ///ejecuto action que hace peticion axios con la info de las noticias
+    this.props.Notice(country, category);
+    this.props.history.push("/notices");
   };
 
   toggleCollapse = () => {
@@ -44,9 +55,11 @@ class NavBar extends Component {
   render() {
     return (
       <MDBNavbar color="blue-gradient" dark expand="md" className="z-depth-4">
-        <MDBNavbarBrand>
-          <strong className="white-text h5">Search Notice Top </strong>
-        </MDBNavbarBrand>
+        <Link to="/">
+          <MDBNavbarBrand>
+            <strong className="white-text h5">Search Notice Top </strong>
+          </MDBNavbarBrand>
+        </Link>
         <MDBNavbarToggler onClick={this.toggleCollapse} />
         <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
           <MDBNavbarNav right>
@@ -101,6 +114,9 @@ const mapDispatchToProps = dispatch => {
   return {
     Notice: (history, country, category) => {
       dispatch(searchNotices(history, country, category));
+    },
+    resetStateNotice: () => {
+      dispatch(resetStateNotice());
     }
   };
 };
