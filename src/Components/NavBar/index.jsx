@@ -30,10 +30,9 @@ class NavBar extends Component {
     this.setState({ [name]: value });
   };
 
-  //submit info
+  // submit info to redux
   onClick = e => {
     e.preventDefault();
-    console.log(this.state.country, this.state.category);
     const { country, category } = this.state;
     this.props.Notice(this.props.history, country, category);
   };

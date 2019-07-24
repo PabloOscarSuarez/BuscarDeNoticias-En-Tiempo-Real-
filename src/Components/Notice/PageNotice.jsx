@@ -8,32 +8,31 @@ import {
   MDBMask
 } from "mdbreact";
 
-export default function PageNotice() {
+export default function PageNotice({ notice }) {
+  const { description, publishedAt, source, title, url, urlToImage } = notice;
   return (
-    <MDBCol lg="2" md="12" className="mb-lg-0 mb-3">
-      <MDBView className="overlay rounded z-depth-1" waves>
+    <MDBCol lg="3" md="12" className="mb-lg-0 mb-5">
+      <MDBView className="overlay rounded z-depth-4" waves>
         <img
-          src="https://cdn.urgente24.com/sites/default/files/2019-07/ave.jpg"
-          alt=""
+          src={urlToImage}
+          alt="No imagen"
           className="img-fluid"
+          width="400px"
         />
-        <a href="#!">
-          <MDBMask overlay="white-slight" />
-        </a>
+        <MDBMask overlay="white-slight" />
       </MDBView>
+
       <MDBCardBody className="pb-0">
+        <h6 className="font-weight-bold my-1">{title}</h6>
         <h6 className="font-weight-bold my-1">
-          Mercado en tensión: en medio de las estrategias para controlar el
-          dólar, bajó fuerte la Bolsa - infobae
+          Publicado:({publishedAt.split("T")[0]})
         </h6>
-        <p className="grey-text">
-          El consorcio europeo reveló el llamado proyecto 'Ave de presa' con el
-          que busca aviones más económicos, seguros y de buena relación con el
-          medio ambiente. Volarían con motores híbridos.
-        </p>
-        <MDBBtn color="indigo" size="sm">
-          <MDBIcon far icon="clone" className="left" /> Urgente24.com
-        </MDBBtn>
+        <p className="grey-text">{description}</p>
+        <a href={url} target="_blank" rel="noopener noreferrer">
+          <MDBBtn color="indigo" size="sm">
+            <MDBIcon far icon="clone" className="left" /> {source.name}
+          </MDBBtn>
+        </a>
         <hr />
       </MDBCardBody>
     </MDBCol>
