@@ -19,8 +19,8 @@ import { searchNotices } from "../../redux/actions/actionsNotice";
 class NavBar extends Component {
   state = {
     isOpen: false,
-    country: "",
-    category: ""
+    country: "ar",
+    category: "sports"
   };
 
   // capturo valores
@@ -43,9 +43,9 @@ class NavBar extends Component {
 
   render() {
     return (
-      <MDBNavbar color="blue-gradient" dark expand="md">
+      <MDBNavbar color="blue-gradient" dark expand="md" className="z-depth-4">
         <MDBNavbarBrand>
-          <strong className="white-text h3">Search Notice Top </strong>
+          <strong className="white-text h5">Search Notice Top </strong>
         </MDBNavbarBrand>
         <MDBNavbarToggler onClick={this.toggleCollapse} />
         <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
@@ -82,7 +82,7 @@ class NavBar extends Component {
                 </select>
               </MDBFormInline>
             </MDBNavItem>
-            <MDBBtn gradient="blue" onClick={this.onClick}>
+            <MDBBtn gradient="blue" onClick={this.onClick} rounded>
               {" "}
               <MDBIcon fab icon="stack-overflow" className="pr-1" /> Info
             </MDBBtn>

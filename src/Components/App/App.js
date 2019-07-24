@@ -8,6 +8,8 @@ import React from "react";
 import Navbar from "../NavBar";
 import NoticeList from "../NoticeList";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+import Home from "../Home";
+import Nofound from "../NoFound";
 
 function App() {
   return (
@@ -16,8 +18,9 @@ function App() {
         <Navbar />
         <div>
           <Switch>
-            <Route exact path="/home" component={NoticeList} />
+            <Route exact path="/" component={Home} />
             <Route exact path="/notices" component={NoticeList} />
+            <Route path="/*" component={Nofound} />
           </Switch>
         </div>
       </div>
