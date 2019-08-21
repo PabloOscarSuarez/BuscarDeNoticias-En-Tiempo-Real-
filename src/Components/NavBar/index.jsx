@@ -70,7 +70,7 @@ class NavBar extends Component {
                   onChange={this.handleChange}
                   name="country"
                 >
-                  <option>Select Country</option>
+                  <option value="ar">Select Country</option>
                   <option value="ar">Argentina</option>
                   <option value="br">Brasil</option>
                   <option value="co">Colombia</option>
@@ -86,7 +86,7 @@ class NavBar extends Component {
                   onChange={this.handleChange}
                   name="category"
                 >
-                  <option>Select Category</option>
+                  <option value="business">Select Category</option>
                   <option value="business">business</option>
                   <option value="entertainment">entertainment</option>
                   <option value="health">health</option>
